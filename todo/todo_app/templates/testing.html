@@ -1,0 +1,14 @@
+<form action="" method="post">
+  {% csrf_token%} {{ form.as_p }}
+  <!-- <input type="text" id="input-box" placeholder="add your tasks"> -->
+  <button type="submit">Add</button>
+</form>
+
+<div class="list">
+  {% for x in tasks %}
+  <div class="task">
+    <span>{{ x.content }}</span>
+    <a href="delete/{{ x.id }}">delete</a>
+  </div>
+  {% endfor %}
+</div>

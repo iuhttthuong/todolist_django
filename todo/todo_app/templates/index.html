@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="todo-app">
+            <div class="app-title">
+                <h2>To-do app</h2>
+                <i class="fa-solid fa-book-bookmark"></i>
+            </div>
+            <div>
+                <!-- <input type="text" id="input-box" placeholder="add your tasks">
+                <button>Add</button> -->
+                <form action="" method="post" class="row">
+                    {% csrf_token %} {{ form.as_p }}
+                    <!-- <input type="text" id="input-box" placeholder="add your tasks"> -->
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+            <ul id="list-container">
+                {% for task in tasks %}
+                <li>{{ task.content }} <span><a href="delete/{{ task.id }}">x</a></span></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
